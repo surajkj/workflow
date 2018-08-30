@@ -1,0 +1,60 @@
+<div *ngIf="isValidRequest; else invalidRequest">
+
+  <div *ngIf="isLoginError" class="red-text center error-message">
+    <i class="material-icons">error</i> {{errorMessage}}
+  </div>
+
+  <div *ngIf="emailForm; else passwordForm">
+
+    <form #loginForm="ngForm" [formGroup]="signinForm" class="col s12 white" (ngSubmit)="emailVerify(signinForm.value)">
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">account_circle</i>
+          <input type="text" class="validate" formControlName="email" placeholder="Phone/Email" [pattern]="unamePattern">
+
+          <!-- <input class="form-control" type="email" placeholder="Enter email" formControlName="email" />
+          <span class="text-danger" *ngIf="signinForm.controls['email'].hasError('required') && (signinForm.controls['email'].dirty || signinForm.controls['email'].touched)">Email address is required</span>
+          <span class="text-danger" *ngIf="signinForm.controls['email'].hasError('email') && (signinForm.controls['email'].dirty || signinForm.controls['email'].touched)">Please enter valid email address</span> -->
+
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <button [disabled]="!signinForm.valid" class="btn-large btn-submit" type="submit">Next</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <ng-template #passwordForm>
+    <form #loginForm="ngForm" [formGroup]="signinForm" class="col s12 white" (ngSubmit)="passwordVerify(signinForm.value)">
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">account_circle</i>
+          <input type="text" class="validate" formControlName="email">
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">vpn_key</i>
+          <input type="password" class="validate" formControlName="password" placeholder="Password">
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <button [disabled]="!signinForm.valid" class="btn-large btn-submit" type="submit">Login</button>
+        </div>
+      </div>
+    </form>
+
+  </ng-template>
+
+  <a routerLink='/set-password' routerLinkActive='active'>Set Password</a>
+
+</div>
+
+
+
+
+<ng-template #invalidRequest>Unauthorized Request.</ng-template>
