@@ -1,0 +1,63 @@
+<div class="container">
+
+
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box box-primary box-solid">
+          <div class="box-header with-border">
+            <h3 class="box-title">
+              <span>
+                <i class="fa fa-edit"></i>
+              </span>
+              <span>Add a new Subprocess</span>
+            </h3>
+          </div>
+
+          <div class="box-body no-padding">
+           
+
+            <form id="form-edit" #subForm="ngForm" [formGroup]="subprocessForm" class="white" method="post" (ngSubmit)="submitSubProcess()"
+              style="padding: 50px;">
+              <fieldset>
+                <div class="row">
+
+
+                  <section class="col col-6">
+                    <section class="form-group ">
+                      <label>Process</label>
+                      <div class="input-group">                  
+                        <select class="form-control" id="process" formControlName="process">
+                          <option value="null">Please select a Process</option>
+                          <option value="7">Customer Journey</option>
+                        </select>
+                        <span class="input-group-addon">
+                          <i class="fa fa-link"></i>
+                        </span>
+                      </div>
+                  
+                    </section>
+                  </section>
+
+
+                  <section class="col col-6">
+                    <section class="form-group ">
+                      <label for="id-subprocess_title">Title</label>
+                      <input type="text" class="form-control input-generate-slug" id="id-subprocess_title" class="validate" formControlName="subprocess_title" placeholder="Please insert the Subprocess"
+                      />
+
+                    </section>
+                  </section>                 
+                </div>
+              </fieldset>
+
+              <div class="form-footer">
+                <button [disabled]="!subprocessForm.valid" class="btn btn-labeled btn-primary btn-submit" type="submit">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

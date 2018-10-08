@@ -1,0 +1,50 @@
+<div class="page-header">
+  <h1>
+    Owner Info
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col s12">
+    <form #appownerForm="ngForm" [formGroup]="ownerForm" class="col s12 white" (ngSubmit)="submitOwnerInfo()" style="padding-top: 20px;">
+
+
+      <div class="form-group col s4">
+        <label>Name</label>
+        <input type="text" class="validate" formControlName="name">
+      </div>
+
+      <div class="form-group col s4">
+        <label>gender</label>
+        <input type="text" class="validate" formControlName="gender">
+      </div>
+
+      <div class="form-group col s4">
+        <label for="designation">designation</label>
+        <input type="text" class="validate" formControlName="designation">
+      </div>
+
+      <div class="form-group col s4">
+        <label for="marital_status">marital_status</label>
+        <input type="text" class="validate" formControlName="marital_status">
+      </div>
+
+      <div class="form-group col s4">
+        <label for="dob">dob</label>
+        <input type="text" class="validate" formControlName="dob">
+      </div>
+
+      <div class="form-group col s4">
+        <label for="category">category</label>
+        <input type="text" class="validate" formControlName="category">
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <button [disabled]="!ownerForm.valid" class="btn-large btn-submit" type="submit">Submit</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>

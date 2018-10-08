@@ -24,5 +24,24 @@ export class UserService {
     var reqHeader = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded', 'No-Auth': 'True', 'X-Requested-With': 'XMLHttpRequest' });
     return this.http.post(this.rootUrl + '/v1/login', data, { headers: reqHeader });
   }
+
+  sendOTP(requestData, nextAction){
+    var data = "name=" + requestData.username + "&email=" + requestData.email + "&phone=" + requestData.phone;
+    var reqHeader = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded', 'No-Auth': 'True', 'X-Requested-With': 'XMLHttpRequest' });
+    return this.http.post(this.rootUrl + '' + nextAction.action, data, { headers: reqHeader });
+  }
+
+  register(requestData, nextAction) {
+    let userdata = sessionStorage.getItem('userdata');
+    let udata = JSON.parse(userdata);
+    var data = "name=" + udata.name + "&email=" + udata.email + "&phone=" + udata.phone + "&otp=" + requestData.otp;
+    var reqHeader = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded', 'No-Auth': 'True', 'X-Requested-With': 'XMLHttpRequest' });
+    return this.http.post(this.rootUrl + '' + nextAction.action, data, { headers: reqHeader });
+  }
+
+  fetchWorkflow(){
+    var reqHeader = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded', 'No-Auth': 'True', 'X-Requested-With': 'XMLHttpRequest' });
+    return this.http.get(this.rootUrl + '/v1/process', { headers: reqHeader });
+  }
   
 }

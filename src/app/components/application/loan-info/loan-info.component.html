@@ -1,0 +1,40 @@
+<div class="page-header">
+  <h1>
+    Loan Info
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col s12">
+    <form #appLoanForm="ngForm" [formGroup]="loanForm" class="col s12 white" (ngSubmit)="submitLoanInfo()" style="padding-top: 20px;">
+
+
+      <div class="form-group col s4">
+        <label>Minimum Loan Amount</label>
+        <input type="text" class="validate" formControlName="min_loan_amount">
+      </div>
+
+      <div class="form-group col s4">
+        <label>Max Loan Amount</label>
+        <input type="text" class="validate" formControlName="max_loan_amount">
+      </div>
+
+      <div class="form-group col s4">
+        <label for="loan_tenor">Loan tenor</label>
+        <input type="text" class="validate" formControlName="loan_tenor">
+      </div>
+
+      <div class="form-group col s4">
+        <label for="loan_purpose">Loan Purpose</label>
+        <input type="text" class="validate" formControlName="loan_purpose">
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <button [disabled]="!loanForm.valid" class="btn-large btn-submit" type="submit">Submit</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>

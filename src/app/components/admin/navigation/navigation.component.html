@@ -1,0 +1,104 @@
+<div class="container">
+
+
+  <section class="content">
+    <h2 class="hidden">Page</h2>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box box-primary box-solid">
+          <div class="box-header with-border">
+            <h3 class="box-title">
+              <span>
+                <i class="fa fa-edit"></i>
+              </span>
+              <span>Add a new Task</span>
+            </h3>
+          </div>
+
+          <div class="box-body no-padding">
+            <div class="callout callout-info callout-help">
+              <h4 class="title">Information</h4>
+              <p>Please complete the form to create the navigation</p>
+            </div>
+
+            <form id="form-edit" #navigationForm="ngForm" [formGroup]="navForm" class="white" method="post" (ngSubmit)="submitNav()"
+              style="padding: 50px;">
+              <fieldset>
+                <div class="row">
+
+                  <div class="col col-5">
+                    <section class="form-group ">
+                      <label for="id-process_id">Process </label>
+                      <select class="select2 form-control select2-hidden-accessible" id="process_id"  formControlName="process_id" tabindex="-1" aria-hidden="true">
+                        <option value="null">Please select a Process</option>
+                        <option value="1">Customer Journey</option>
+                      </select>
+                    </section>
+                  </div>
+
+                  <div class="col col-5">
+                    <section class="form-group ">
+                      <label for="id-sub_process_id">SubProcess</label>
+                      <select class="form-control" id="sub_process_id" formControlName="sub_process_id">
+                        <option value="null">Please select a SubProcess</option>
+                        <option value="{{subprocess.id}}" *ngFor="let subprocess of subprocesses"> {{subprocess.subprocess_title}}</option>
+                      </select>
+                    </section>
+                  </div>
+
+                </div>
+
+                <div class="row">
+                  <section class="col col-3">
+                    <section class="form-group ">
+                      <label for="id-task">Task</label>
+                      <input type="text" class="form-control input-generate-slug" id="id-title" class="validate" formControlName="title" placeholder="Loan Detail"
+                      />
+
+                    </section>
+                  </section>
+
+                  <section class="col col-3">
+                    <section class="form-group ">
+                      <label for="id-slug">Slug</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control" id="id-slug" class="validate" formControlName="slug" placeholder="loan-detail"
+                          value="">
+                        <span class="input-group-addon">
+                          <i class="fa fa-link"></i>
+                        </span>
+                      </div>
+
+                    </section>
+                  </section>
+
+                  <section class="col col-3">
+                    <section class="form-group ">
+                      <label for="id-action">Api Uri</label>
+                      <div class="input-group">
+                        <select class="form-control" id="action" formControlName="action">
+                          <option value="null">Please select a Api Uri</option>
+                          <option value="{{api}}" *ngFor="let api of api_routes"> {{api}}</option>
+                        </select>
+                        <span class="input-group-addon">
+                          <i class="fa fa-link"></i>
+                        </span>
+                      </div>
+
+                    </section>
+                  </section>
+                </div>
+
+               
+              </fieldset>
+
+              <div class="form-footer">
+                <button [disabled]="!navForm.valid" class="btn btn-labeled btn-primary btn-submit" type="submit">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

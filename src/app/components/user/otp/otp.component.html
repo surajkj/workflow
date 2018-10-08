@@ -1,0 +1,21 @@
+<h2 >OTP</h2>
+
+<div *ngIf="isError" class="red-text center error-message">
+  <i class="material-icons">error</i> 
+  <div *ngFor="let error of errorMessage">{{ error }}</div>
+</div>
+
+<form #oForm="ngForm" [formGroup]="otpForm" class="col s12 white" (ngSubmit)="register()">
+  <div class="row">
+    <div class="input-field col s12">
+      <i class="material-icons prefix">account_circle</i>
+      <input type="text" class="validate" formControlName="otp" placeholder="OTP">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <button [disabled]="!otpForm.valid" class="btn-large btn-submit" type="submit">Submit</button>
+    </div>
+  </div>
+</form>

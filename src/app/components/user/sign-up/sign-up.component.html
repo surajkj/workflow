@@ -1,3 +1,35 @@
-<p>
-  sign-up works!
-</p>
+<h2 >Signup</h2>
+
+<div *ngIf="isError" class="red-text center error-message">
+  <i class="material-icons">error</i> 
+  <div *ngFor="let error of errorMessage">{{ error }}</div>
+</div>
+
+<form #signupForm="ngForm" [formGroup]="registerForm" class="col s12 white" (ngSubmit)="sendOTP()">
+  <div class="row">
+    <div class="input-field col s12">
+      <i class="material-icons prefix">account_circle</i>
+      <input type="text" class="validate" formControlName="username" placeholder="User Name">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <i class="material-icons prefix">account_circle</i>
+      <input type="text" class="validate" formControlName="email" placeholder="example@gmail.com" value="amit">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <i class="material-icons prefix">vpn_key</i>
+      <input type="text" class="validate" formControlName="phone" placeholder="Phone">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <button [disabled]="!registerForm.valid" class="btn-large btn-submit" type="submit">Submit</button>
+    </div>
+  </div>
+</form>

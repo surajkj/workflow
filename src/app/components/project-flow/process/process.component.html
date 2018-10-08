@@ -1,0 +1,62 @@
+<div class="container">
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box box-primary box-solid">
+          <div class="box-header with-border">
+            <h3 class="box-title">
+              <span>
+                <i class="fa fa-edit"></i>
+              </span>
+              <span>Add a new Process</span>
+            </h3>
+          </div>
+
+          <div class="box-body no-padding">
+            <form id="form-edit" #process_Form="ngForm" [formGroup]="processForm" class="white" method="post" (ngSubmit)="submitProcess()"
+              style="padding: 50px;">
+              <fieldset>
+                <div class="row">
+                  <section class="col col-6">
+                    <section class="form-group ">
+                      <label for="id-process_title">Process Title</label>
+                      <input type="text" class="form-control input-generate-slug" id="id-process_title" class="validate" formControlName="process_title"
+                      />
+                    </section>
+                  </section>
+                </div>
+              </fieldset>
+              <div class="form-footer">
+                <button [disabled]="!processForm.valid" class="btn btn-labeled btn-primary btn-submit" type="submit">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+
+
+        <h2>Drag and Drop demo</h2>
+        <div id="div1" (drop)="drop($event)" (dragover)="allowDrop($event)">
+
+
+          <p draggable="true" (dragstart)="drag($event)" id="drag1">Text 1</p>
+          <p draggable="true" (dragstart)="drag($event)" id="drag2">Text 2</p>
+          <p draggable="true" (dragstart)="drag($event)" id="drag3">Text 3</p>
+          <p draggable="true" (dragstart)="drag($event)" id="drag4">Text 4</p>
+          <p draggable="true" (dragstart)="drag($event)" id="drag5">Text 5</p>
+          <p draggable="true" (dragstart)="drag($event)" id="drag6">Text 6</p>
+
+          
+        </div>
+
+        <div id="div2" (drop)="drop($event)" (dragover)="allowDrop($event)">
+        </div>
+
+
+
+        
+
+      </div>
+    </div>
+  </section>
+</div>

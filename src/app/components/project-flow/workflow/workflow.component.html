@@ -1,0 +1,123 @@
+<div class="container">
+
+
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box box-primary box-solid">
+          <div class="box-header with-border">
+            <h3 class="box-title">
+              <span>
+                <i class="fa fa-edit"></i>
+              </span>
+              <span>Create Workflow</span>
+            </h3>
+          </div>
+
+          <div class="box-body no-padding">
+
+            <form id="form-edit" #workForm="ngForm" [formGroup]="workFlowForm" class="white" method="post" (ngSubmit)="submitWorkflow()"
+              style="padding: 50px;">
+              <fieldset>
+                <div class="row">
+
+                  <div class="col col-5">
+                    <section class="form-group ">
+                      <label for="id-process_id">Process </label>
+                      <select class="select2 form-control select2-hidden-accessible" id="process_id" formControlName="process_id" tabindex="-1"
+                        aria-hidden="true" (change)="getSubProcess($event)">
+                        <option value="null">Please select a Process</option>
+                        <option value="7">Customer Journey</option>
+                      </select>
+                    </section>
+                  </div>
+
+                  <div class="col col-5">
+                    <section class="form-group ">
+                      <label for="id-sub_process_id">SubProcess</label>
+                      <select class="form-control" id="sub_process_id" formControlName="sub_process_id">
+                        <option value="null">Please select a SubProcess</option>
+                        <option value="{{subprocess.id}}" *ngFor="let subprocess of subprocesses"> {{subprocess.name | uppercase}}</option>
+                      </select>
+                    </section>
+                  </div>
+
+                  <div class="col col-5">
+                    <section class="form-group ">
+                      <label for="id-task">Choose Task</label>
+                      <select class="form-control" id="task" formControlName="task" (change)="getFieldsByTaskId($event)">
+                        <option value="null">Please select a task</option>
+                        <option value="{{task.task_id}}" *ngFor="let task of task_list"> {{task.name | uppercase}}</option>
+                      </select>
+                    </section>
+                  </div>
+
+                  <div class="col col-5">
+                    <section class="form-group ">
+                      <label for="id-parent_task">Choose Parent Task</label>
+                      <select class="form-control" id="parent_task" formControlName="parent_task">
+                        <option value="null">Please select a SubProcess</option>
+                        <option value="1">OTP Request</option>
+                        <option value="2">Register</option>
+                        <option value="3">Basic Info</option>
+                        <option value="4">Loan Detail</option>
+                        <option value="5">Business Detail</option>
+                        <option value="6">Annual Sales</option>
+                        <option value="7">Owner Info</option>
+                        <option value="8">Industry Type</option>
+                      </select>
+                    </section>
+                  </div>
+
+                </div>
+
+                <hr />
+                <div class="row"  >
+                  <h3>Task Configuration on page load</h3>
+                  {{configuration}}
+                  <section class="col col-3 form-group">
+                    <label for="id-form_field">Choose Form Field</label>
+                    <div class="input-group">
+                      <select class="form-control" id="form_field" formControlName="form_field">
+                        <option value="null">Please select form field</option>
+                        <option value="{{field.id}}" *ngFor="let field of config_fields"> {{field.name | uppercase}}</option>
+                      </select>
+                    </div>
+                  </section>
+
+                  <section class="col col-3 form-group">
+                    <label for="id-expression">Select Expression</label>
+                    <div class="input-group">
+                      <select class="form-control" id="expression" formControlName="expression">
+                        <option value="null">Please select Expression</option>
+                        <option value="=">=</option>
+                        <option value="!=">!=</option>
+                        <option value="<"><</option>
+                        <option value="<="><=</option>
+                        <option value=">">></option>
+                        <option value=">=">>=</option>
+                      </select>
+                    </div>
+                  </section>
+
+                  <section class="col col-3 form-group">
+                    <label for="id-expression_value">Expression Value</label>
+                    <div class="input-group">
+                      <input type="text" class="form-control input-generate-slug" id="id-expression_value" class="validate" formControlName="expression_value"
+                         />
+                    </div>
+                  </section>
+
+                </div>
+              </fieldset>
+
+              <div class="form-footer">
+                <button [disabled]="!workFlowForm.valid" class="btn btn-labeled btn-primary btn-submit" type="submit">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
